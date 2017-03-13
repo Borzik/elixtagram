@@ -8,10 +8,10 @@ defmodule Elixtagram.Mixfile do
        elixir: ">= 1.2.3",
        build_embedded: Mix.env == :prod,
        start_permanent: Mix.env == :prod,
-       description: description,
-       package: package,
+       description: description(),
+       package: package(),
        test_coverage: [tool: ExCoveralls],
-       deps: deps,
+       deps: deps(),
        docs: [extras: ["README.md"], main: "readme"]
     ]
   end
@@ -20,19 +20,19 @@ defmodule Elixtagram.Mixfile do
     [applications: app_list(Mix.env)]
   end
 
-  defp app_list(_), do: app_list
+  defp app_list(_), do: app_list()
   defp app_list, do: [:logger, :httpoison, :oauth2]
 
   defp deps do
     [
-      {:httpoison, "~> 0.9.1"},
-      {:poison, "~> 2.2.0"},
-      {:oauth2, "~> 0.7.0"},
-      {:exvcr, "~> 0.8.2", only: [:dev, :test]},
-      {:ex_doc, "~> 0.13.1", only: [:dev, :docs]},
-      {:excoveralls, "~> 0.5.6", only: [:dev, :test]},
-      {:inch_ex, "~> 0.5.3", only: [:dev, :docs]},
-      {:credo, "~> 0.4.11", only: :dev}
+      {:httpoison, "~> 0.9"},
+      {:poison, "~> 2.2"},
+      {:oauth2, "~> 0.7"},
+      {:exvcr, "~> 0.8", only: [:dev, :test]},
+      {:ex_doc, "~> 0.13", only: [:dev, :docs]},
+      {:excoveralls, "~> 0.5", only: [:dev, :test]},
+      {:inch_ex, "~> 0.5", only: [:dev, :docs]},
+      {:credo, "~> 0.4", only: :dev}
     ]
   end
 
